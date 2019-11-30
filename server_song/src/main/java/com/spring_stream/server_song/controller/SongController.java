@@ -51,17 +51,25 @@ public class SongController {
         // Set the content type and attachment header.
         String contentType = response.getContentType();
 
+        //audio/mpeg
         response.addHeader("Content-Disposition:", "attachment;filename=\"" + f.getName() + "\"");
         response.setContentType(contentType);
+
+        System.out.println("\n\ngetContentType: "+response.getContentType()+"\n\n");
 
         // Copy the stream to the response's output stream.
         try {
             IOUtils.copy(targetStream, response.getOutputStream());
+            //General IO stream manipulation utilities.
+            //This class provides static utility methods for input/output operations.
+            //copy - these methods copy all the data from one stream to another
+
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
             response.flushBuffer();
+            //Forces any content in the buffer to be written to the client
         } catch (IOException e) {
             e.printStackTrace();
         }
