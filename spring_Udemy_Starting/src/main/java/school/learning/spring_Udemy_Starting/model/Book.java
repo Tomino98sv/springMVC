@@ -2,6 +2,7 @@ package school.learning.spring_Udemy_Starting.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -33,6 +34,9 @@ public class Book {
         this.isbn = isbn;
         this.publisher = publisher;
         this.authors = authors;
+    }
+
+    public Book(String title, String isbn, Optional<Publisher> publisher) {
     }
 
     public String getTitle() {
